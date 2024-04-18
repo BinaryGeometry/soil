@@ -1,5 +1,6 @@
 // import { db } from "@vercel/postgres";
 import Link from "next/link";
+import { desc } from "node_modules/drizzle-orm/expressions.cjs";
 
 import { CreatePost } from "~/app/_components/create-post";
 import { db } from "~/server/db";
@@ -21,25 +22,24 @@ const mockImages = mockUrls.map((url, index)=> ({
 
 export default async function Home() {
 
-  const posts = await db.query.posts.findMany();
+  const images = await db.query.images.findMany({
+    orderBy:(model, { desc }) => desc(model.id)
+  });
 
-  console.log(posts);
+  console.log(images);
 
   return (
     <main className="">
       <div className="flex flex-wrap">
-        {posts.map((post) => (
-          <div key={post.id}>{post.name}</div>
-        ))}
-        {/* {posts.map((post, index) => {
-        })} */}
-
-        {mockImages.map((image, index) => (
+       
+        {([,...images,...images,...images]).map((image, index) => (
           <div key={image.id +'-'+ index} className="w-1/2 p4 gap-4">
-            <img src={image.url} alt="image" />
+            <img src={image.url} alt={image.name} />
+            <h2>{image.name}</h2>
           </div>
         ))}
       </div>
+
         {/* <CrudShowcase /> */}
 
     </main>
