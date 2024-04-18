@@ -34,7 +34,9 @@ export default function RootLayout({
         <TopNav/>
         
 
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        {/* <TRPCReactProvider> */}
+          {children}
+          {/* </TRPCReactProvider> */}
       
       </body>
     </html>
