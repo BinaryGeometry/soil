@@ -1,10 +1,24 @@
-# Create T3 App
+
+# SOIL
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
 
-## What's next? How do I make an app with this?
+## TODO
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- [ ] MAKE DEPLY (VERCEL)
+- [ ] SCAFFORLD BASIC UI WITH MODKCK DATA shadui)
+- [ ] ACTUALLY SET UP A DATATBASE (vercel postgres)
+- [ ] ATTACH DATATABSE TO UI
+- [ ] ADD AUTHENTICATION (clerk)
+- [ ] ADD IMAGE UPLOAD (uploadthing)
+- [ ] ERROR MANAGMENT (senty)
+- [ ] ROUTING AND IMAGE PAGE (parrallel route)
+- [ ] DELETE BUTTON WITH SERVER ACTIONS (server actions)
+- [ ] ANALYNTICS (posthog)
+- [ ] RATELIMITING (upstash)
+
+
+## What's next? How do I make an app with this?
 
 If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
 
@@ -14,6 +28,7 @@ If you are not familiar with the different technologies used in this project, pl
 - [Drizzle](https://orm.drizzle.team)
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
+
 
 ## Learn More
 
@@ -27,3 +42,4 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
 ## How do I deploy this?
 
 Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+
