@@ -12,6 +12,7 @@ https://fsl.software/
 https://nextjs.org/docs/app/building-your-application/routing/colocation
 https://css-tricks.com/snippets/css/complete-guide-grid/
 heroicons///
+https://plausible.io/
 
 doing my best work for you should never mean that i have to less than my best work for anyone else
 ## TODO
@@ -35,6 +36,9 @@ doing my best work for you should never mean that i have to less than my best wo
 - [] mini stats
 - [] create warband with coins
 - [] items
+
+show all / show used filter
+cascade colums if photo then mini if mini then warband  
 
 ## NICE to have
 
