@@ -1,6 +1,4 @@
 
-
-
 export default async function Layer2Page() {
   return (
     <main className="">

@@ -3,6 +3,15 @@
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
 
+
+## eXpo
+
+### Argos model of software design
+
+https://fsl.software/
+https://nextjs.org/docs/app/building-your-application/routing/colocation
+
+doing my best work for you should never mean that i have to less than my best work for anyone else
 ## TODO
 
 - [x] MAKE DEPLY (VERCEL)
@@ -16,6 +25,20 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 - [] DELETE BUTTON WITH SERVER ACTIONS (server actions)
 - [] ANALYNTICS (posthog)
 - [] RATELIMITING (upstash)
+
+## mvp curation
+
+- [] create mini
+- [] create item
+- [] mini stats
+- [] create warband with coins
+- [] items
+
+## NICE to have
+
+- [] campaigns
+- [] dens
+- [] device camera upload create
 
 
 ## What's next? How do I make an app with this?
