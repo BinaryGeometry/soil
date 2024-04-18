@@ -10,6 +10,8 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 
 https://fsl.software/
 https://nextjs.org/docs/app/building-your-application/routing/colocation
+https://css-tricks.com/snippets/css/complete-guide-grid/
+heroicons///
 
 doing my best work for you should never mean that i have to less than my best work for anyone else
 ## TODO

@@ -42,15 +42,17 @@ export default function RootLayout({
     <html lang="en">
       <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
       
-      <body className={`font-sans ${inter.variable} flex flex-col gap-4`}>
-        <TopNav></TopNav>
-        
-
+      <body className={`font-sans ${inter.variable}`}>
+        <div className=" h-screen grid grid-rows-[auto,1fr]">
+          <TopNav></TopNav>
+          <main className="overflow-y-scroll">
+            {children}
+          </main>
+        </div>
+        {modal}
+        <div id="modal-root" />
         {/* <TRPCReactProvider> */}
-          {children}
-          {modal}
-          <div id="modal-root" />
-          {/* </TRPCReactProvider> */}
+        {/* </TRPCReactProvider> */}
       
       </body>
     </html>
