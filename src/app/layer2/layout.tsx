@@ -15,13 +15,7 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-function TopNav() {
-  return (
-      <nav className="flex items-center justify-between w-full p-4 text-xl font-semibold border-b">
-          <div>Soil</div>
-      </nav>
-  )
-}
+
 
 export default function RootLayout({
   children,
@@ -29,14 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`font-sans ${inter.variable} flex flex-col gap-4`}>
-        <TopNav/>
-        
+    <div>
 
+<header className="full-width">layer2 header</header>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       
-      </body>
-    </html>
+      </div>
   );
 }
