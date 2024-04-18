@@ -7,8 +7,8 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 
 - [x] MAKE DEPLY (VERCEL)
 - [x] SCAFFORLD BASIC UI WITH MODKCK DATA (shadui)
-- [] ACTUALLY SET UP A DATATBASE (vercel postgres)
-- [] ATTACH DATATABSE TO UI
+- [x] ACTUALLY SET UP A DATATBASE (vercel postgres)
+- [x] ATTACH DATATABSE TO UI
 - [] ADD AUTHENTICATION (clerk)
 - [] ADD IMAGE UPLOAD (uploadthing)
 - [] ERROR MANAGMENT (senty)
