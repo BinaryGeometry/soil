@@ -10,19 +10,20 @@ import { db } from "~/server/db";
 import { api } from "~/trpc/server";
 
 
-
 export const dynamic = "force-dynamic";
 
+
+import { getMyImages } from  "~/server/queries"
+import Image from "next/image";
 async function Images(){
-  const images = await db.query.images.findMany({
-    orderBy:(model, { desc }) => desc(model.id)
-  });
-  
+
+  const images = await getMyImages();
+
   return (  
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap gap-4 justify-center">
         {images.map((image, index) => (
-          <div key={image.id +'-'+ index} className="w-1/2 p4 gap-4">
-            <img src={image.url} alt={image.name} />
+          <div key={image.id +'-'+ index} className="w-48 h-48 flex-col">
+            <Image src={image.url} alt={image.name} width={480} height={480} style={{objectFit:"contain"}}/>
             <h2>{image.name}</h2>
           </div>
         ))}
