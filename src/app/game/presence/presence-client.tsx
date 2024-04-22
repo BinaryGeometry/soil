@@ -13,7 +13,7 @@ export default function Presence() {
   const [randomName]  =  useState(names.random());
   const [isOnline, setIsOnline] = useState(false)
 
-  const client = new Ably.Realtime ({ authUrl:'/token', authMethod: 'POST', clientId: randomName });
+  const client = new Ably.Realtime ({ authUrl:'/api/token', authMethod: 'POST', clientId: randomName });
 
   function toggleState(val: boolean) {
     setIsOnline(val)

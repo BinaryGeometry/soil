@@ -8,7 +8,7 @@ import SampleHeader from '~/components/game/SampleHeader';
 
 export default function PubSubClient() {
 
-  const client = new Ably.Realtime ({ authUrl: '/token', authMethod: 'POST' });
+  const client = new Ably.Realtime ({ authUrl: '/api/token', authMethod: 'POST' });
 
   return (
     <AblyProvider client={ client }>
@@ -43,7 +43,7 @@ function PubSubMessages() {
   }
 
   const publicFromServerHandler: MouseEventHandler = (_event: MouseEvent<HTMLButtonElement>) => {
-    fetch('/publish', {
+    fetch('/api/publish', {
         'method': 'POST',
         'headers': {
             'content-type': 'application/json',

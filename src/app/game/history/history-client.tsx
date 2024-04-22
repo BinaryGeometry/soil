@@ -9,7 +9,7 @@ import SampleHeader from '~/components/game/SampleHeader';
 
 export default function Presence() {
 
-  const client = new Ably.Realtime ({ authUrl:'/token', authMethod: 'POST' });
+  const client = new Ably.Realtime ({ authUrl:'/api/token', authMethod: 'POST' });
 
   return (
      <AblyProvider client={ client }>
