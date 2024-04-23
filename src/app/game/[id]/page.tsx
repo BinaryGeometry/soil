@@ -8,6 +8,8 @@ import dynamic from 'next/dynamic';
 import Sidebar from "~/components/game/Sidebar";
 import { Button } from "~/components/ui/button";
 import Image from "next/image";
+import { auth } from "@clerk/nextjs/server";
+import { getGameState } from "~/server/queries";
 // import GameModule from "../game-module";
 
 const GameModule = dynamic(() => import('../game-module'), {
@@ -22,6 +24,13 @@ export default async function GamePage( {
 
     const idAsNumber = Number(gameId);
 
+    // const user = auth()
+    // const userId = user.userId;
+
+    const gameData = await getGameState(idAsNumber);
+
+    console.log(gameData)
+
   const pageId="PubSubChannels"
 
   return (
@@ -30,7 +39,7 @@ export default async function GamePage( {
         {/* <div className="flex flex-col grow gap-6 pt-12 pr-12 pb-12 pl-12 rounded-2xl border-slate-100 border-t border-b border-l border-r border-solid border h-[864px] bg-slate-50"> */}
 
           
-                <GameModule room={idAsNumber} />
+                <GameModule room={idAsNumber} gameState={gameData} />
                 
         {/* </div> */}
       </>

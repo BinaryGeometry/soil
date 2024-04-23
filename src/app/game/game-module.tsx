@@ -6,25 +6,31 @@ import { MouseEventHandler, MouseEvent, useState } from 'react'
 import Logger, { LogEntry } from '~/components/game/Logger';
 import SampleHeader from '~/components/game/SampleHeader';
 import { Button } from '~/components/ui/button';
+import { WarbandPanel } from './warband-panel';
 
-export default function GameModule({room}) {
+export default function GameModule({room, gameState}) {
 
   const client = new Ably.Realtime ({ authUrl: '/api/token', authMethod: 'POST' });
 
   const gameRoomChannel = `game-channel-${room}`;
 
   console.log('gameRoomChannel', gameRoomChannel)
+  console.log('gameState', gameState.p1Warband)
   return (
     <AblyProvider client={ client }>
       <ChannelProvider channelName={gameRoomChannel}>
-        <div className="h-full w-1/3 bg-zinc-200 bg-opacity-35 flex justify-center items-center">
+        <div className="h-full w-1/3 bg-zinc-200 bg-opacity-35 flex justify-center">
             {/* <Button  size="lg" >play game</Button> */}
+            {/* <h2>{gameState.p1Id}</h2> */}
+            
+            <WarbandPanel warband={gameState.p1Warband} />
             {/* <PubSubMessages room={gameRoomChannel} talking=""/> */}
         </div>
         <div className="h-full w-1/3 flex justify-center items-center">
             <ConnectionStatus />
         </div>
-        <div className="h-full w-1/3 bg-zinc-200 bg-opacity-35 flex justify-center items-center">
+        <div className="h-full w-1/3 bg-zinc-200 bg-opacity-35 flex justify-center">
+            <WarbandPanel warband={gameState.p2Warband} />
             {/* <Button  size="lg" >Play Friend</Button> */}
             {/* <Button  size="lg" >Play Stranger</Button> */}
             {/* <PubSubMessages room={gameRoomChannel} talking=""/> */}

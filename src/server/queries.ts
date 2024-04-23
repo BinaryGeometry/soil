@@ -76,3 +76,20 @@ export async function getMyMinis() {
     });
     return minis;
 }
+
+export async function getGameState(gameId: number) {
+
+    const user = auth()
+    const userId = user.userId;
+    if (!userId) throw new Error('error');
+    
+    const game = await db.query.games.findFirst({
+        where:(model, { eq }) => eq(model.id, gameId),
+        orderBy:(model, { desc }) => desc(model.id),
+        with: {
+            p1Warband: true,
+            p2Warband: true,
+        },
+    });
+    return game;
+}

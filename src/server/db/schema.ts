@@ -165,7 +165,7 @@ export const games = createTable("games",
   {
     id: serial("id").primaryKey(),
     p1Id: varchar("p1Id", {length:256}),
-    p1WarbandId: varchar("p1WarbandId"),
+    p1WarbandId: integer("p1WarbandId"),
     p2Id: varchar("p2Id", {length:256}),
     p2WarbandId: integer('p2WarbandId'),
     createdAt: timestamp("created_at")
