@@ -59,3 +59,20 @@ export async function deleteImage(id: string) {
     // return image;
 }
 
+
+export async function getMyMinis() {
+
+    const user = auth()
+    const userId = user.userId;
+    if (!userId) throw new Error('error');
+    
+    const minis = await db.query.minis.findMany({
+        where:(model, { eq }) => eq(model.userId, userId),
+        orderBy:(model, { desc }) => desc(model.id),
+        with: {
+            image: true,
+            species: true
+        },
+    });
+    return minis;
+}

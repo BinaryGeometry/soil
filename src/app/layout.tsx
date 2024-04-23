@@ -35,6 +35,9 @@ import { CSPostHogProvider } from '~/app/_analytics/provider'
 <meta name="theme-color" content="#ffffff"></meta>
  */}
 
+// https://nextjs.org/docs/app/building-your-application/optimizing/fonts#with-tailwind-css
+
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -71,9 +74,9 @@ export default function RootLayout({
       <body className={`font-sans ${inter.variable} dark`}>
         <div className=" h-screen grid grid-rows-[auto,1fr]">
           <TopNav></TopNav>
-          <main className="overflow-y-scroll">
+          {/* <main className="overflow-y-scroll"> */}
             {children}
-          </main>
+          {/* </main> */}
         </div>
         {modal}
         <Toaster />

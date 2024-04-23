@@ -12,12 +12,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-
-        <div className="flex flex-row bg-white">
-          <div className="flex flex-row gap-4 p-12 grow">
+    <main className="bg-[url('/thegreasygoblin.files.burrows_badgers_01.jpg')] h-[calc(100vh-74px)] p-10 w-screen bg-cover content-center">
+          <div className="h-full size-full bg-zinc-300  bg-opacity-85 border-solid border-2 border-zinc-500 overflow-hidden rounded-[50px] flex">
             {children}
           </div>
-        </div>
+        </main>
+
+        // <div className="flex flex-row">
+        //   <div className="flex flex-row gap-4 p-12 grow">
+        //     {children}
+        //   </div>
+        // </div>
 
   )
 }
