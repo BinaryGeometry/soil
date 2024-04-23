@@ -113,9 +113,11 @@ export const minisRelations = relations(minis, ({ many, one }) => ({
 export const warbands = createTable("warbands",
   {
     id: serial("id").primaryKey(),
-    name: varchar("name", { length: 256 }).notNull(),
-    url: varchar("url", { length: 1024 }).notNull(),
-    userId: varchar("userId", {length:256}).notNull(),
+    name: varchar("name", { length: 256 }),
+    userId: varchar("userId", {length:256}),
+    allegience: varchar("allegience", { length: 1024 }),
+    den: varchar("den", { length: 256 }),
+    pennies: integer("pennies"),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
@@ -127,6 +129,10 @@ export const warbands = createTable("warbands",
 );
 
 export const warbandsRelations = relations(warbands, ({ many }) => ({
+  // species: one(beasts, {
+  //   fields: [minis.speciesId],
+  //   references: [beasts.id],
+  // }),
   minisToWarbands: many(minisToWarbands),
 }));
 
@@ -154,3 +160,33 @@ export const minisToWarbandsRelations = relations(minisToWarbands, ({ one }) => 
     references: [minis.id],
   }),
 }));
+
+export const games = createTable("games",
+  {
+    id: serial("id").primaryKey(),
+    p1Id: varchar("p1Id", {length:256}),
+    p1WarbandId: varchar("p1WarbandId"),
+    p2Id: varchar("p2Id", {length:256}),
+    p2WarbandId: integer('p2WarbandId'),
+    createdAt: timestamp("created_at")
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp("updatedAt"),
+  },
+  (example) => ({
+    p1Index: index("game_p1x").on(example.p1Id),
+    p2Index: index("game_p2x").on(example.p2Id),
+  })
+);
+
+export const gamesRelations = relations(games, ({ many, one }) => ({
+  p1Warband: one(warbands, {
+    fields: [games.p1WarbandId],
+    references: [warbands.id],
+  }),
+  p2Warband: one(warbands, {
+    fields: [games.p2WarbandId],
+    references: [warbands.id],
+  }),
+}));
+

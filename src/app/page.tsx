@@ -15,6 +15,7 @@ export const dynamic = "force-dynamic";
 
 import { getMyImages } from  "~/server/queries"
 import Image from "next/image";
+import { Button } from "~/components/ui/button";
 async function Images(){
 
   const images = await getMyImages();
@@ -33,21 +34,45 @@ async function Images(){
       </div>
   )
 }
-
+// 
 export default async function Home() {
 
   return (
-    <main className="">
+    <>
       <SignedIn>
-        <Images/>
         
+        <main className="h-screen w-screen bg-cover">
+      
+          {/* <Images/> */}
+          
+        
+        
+          <Image src="https://utfs.io/f/8e368fb4-7753-47c7-b927-65a61ed2ca28-n3j07l.jpg"
+          width={4000} height={400}></Image>
+          {/* <CrudShowcase /> */}
+        </main>
       </SignedIn>
       <SignedOut>
-        sign in
-      </SignedOut>
-        {/* <CrudShowcase /> */}
+        <main className="bg-[url('/thegreasygoblin.files.burrows_badgers_01.jpg')] h-[calc(100vh-74px)] p-10 w-screen bg-cover content-center">
+        {/* <div className="bg-[url('/g3.jpg')  <] h-[calc(80vh)] w-[calc(80vw)] bg-cover rounded-lg"> */}
+          <div className="h-full size-full bg-zinc-300  bg-opacity-85 border-solid border-2 border-zinc-500 overflow-hidden rounded-[50px] flex">
+            <div class="h-full w-1/3 bg-zinc-200 bg-opacity-35 h-12 flex justify-center items-center">
 
-    </main>
+            <Button  size="lg" >play game</Button>
+            </div>
+            <div class="h-full w-1/3  h-12 flex justify-center items-center">
+                <Image src="/slogan.png" width={300} height={200} />
+            </div>
+            <div class="h-full w-1/3 bg-zinc-200 bg-opacity-35 h-12 flex justify-center items-center">
+
+              <Button  size="lg" >Play Friend</Button>
+              <Button  size="lg" >Play Stranger</Button>
+            </div>
+          </div>
+        </main>
+      </SignedOut>
+    </>
+
   );
 }
 

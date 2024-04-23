@@ -16,8 +16,7 @@ import { TopNav } from "~/app/_components/top-nav";
 
 import { CSPostHogProvider } from '~/app/_analytics/provider'
 
-
-
+// https://nextjs.org/docs/app/building-your-application/optimizing/fonts#with-tailwind-css
 
 const inter = Inter({
   subsets: ["latin"],
