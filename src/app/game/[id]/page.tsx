@@ -6,6 +6,8 @@ import React from "react";
 import "~/styles/globals.css";
 import dynamic from 'next/dynamic';
 import Sidebar from "~/components/game/Sidebar";
+import { Button } from "~/components/ui/button";
+import Image from "next/image";
 // import GameModule from "../game-module";
 
 const GameModule = dynamic(() => import('../game-module'), {
@@ -25,9 +27,12 @@ export default async function GamePage( {
   return (
       <>
         {/* <Sidebar pageId={pageId} /> */}
-        <div className="flex flex-col grow gap-6 pt-12 pr-12 pb-12 pl-12 rounded-2xl border-slate-100 border-t border-b border-l border-r border-solid border h-[864px] bg-slate-50">
-          <GameModule room={idAsNumber} />
-        </div>
+        {/* <div className="flex flex-col grow gap-6 pt-12 pr-12 pb-12 pl-12 rounded-2xl border-slate-100 border-t border-b border-l border-r border-solid border h-[864px] bg-slate-50"> */}
+
+          
+                <GameModule room={idAsNumber} />
+                
+        {/* </div> */}
       </>
   )
 }
