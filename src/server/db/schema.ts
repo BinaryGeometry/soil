@@ -41,6 +41,10 @@ export const images = createTable("images",
   })
 );
 
+export const imagesRelations = relations(images, ({ many }) => ({
+  minis: many(minis),
+}));
+
 // import * as schema1 from './schema1';
 // import * as schema2 from './schema2';
 // import { drizzle } from 'drizzle-orm/...';
@@ -63,7 +67,7 @@ export const images = createTable("images",
 // type Data = {
 //   foo: string;
 //   bar: number;
-// };
+// };One, 
 // const users = mysqlTable('users', {
 //   id: int('id').$type<UserId>().primaryKey(),images
 //   jsonField: json('json_field').$type<Data>(),
@@ -77,7 +81,8 @@ export const minis = createTable("minis",
     items: json('items').$type<string[]>(),
     cost: integer('cost'),
     species: varchar("species", { length: 256 }),
-    imageId: integer('imageId').notNull().references(() => images.id),
+    imageId: integer('imageId'),
+    
     userId: varchar("userId", {length:256}).notNull(),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
@@ -89,7 +94,11 @@ export const minis = createTable("minis",
   })
 );
 
-export const minisRelations = relations(minis, ({ many }) => ({
+export const minisRelations = relations(minis, ({ many, one }) => ({
+  image: one(images, {
+    fields: [minis.imageId],
+    references: [images.id],
+  }),
   minisToWarbands: many(minisToWarbands),
 }));
 

@@ -36,7 +36,6 @@ async function Images(){
 
 export default async function Home() {
 
-
   return (
     <main className="">
       <SignedIn>
