@@ -71,6 +71,7 @@ export async function getMyMinis() {
         orderBy:(model, { desc }) => desc(model.id),
         with: {
             image: true,
+            species: true
         },
     });
     return minis;

@@ -25,13 +25,20 @@ export default function DenLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-        <DenNavigationMenu />
+
+      <div className="container relative">
+        
+          <DenNavigationMenu />
+          {children}
+        
+     
+        
         {/* <DenMenuBar /> */}
         {/* <TRPCReactProvider> */}
-            {children}
+           
         {/* </TRPCReactProvider> */}
       
+
       </div>
   );
 }

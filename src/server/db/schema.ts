@@ -45,33 +45,37 @@ export const imagesRelations = relations(images, ({ many }) => ({
   minis: many(minis),
 }));
 
-// import * as schema1 from './schema1';
-// import * as schema2 from './schema2';
-// import { drizzle } from 'drizzle-orm/...';
-// const db = drizzle(client, { schema: { ...schema1, ...schema2 } });
-// const result = await db.query.users.findMany({
-//   with: {
-//     posts: true      
-//   },
-// });
+export const beasts = createTable("beasts",
+  {
+    id: serial("id").primaryKey(),
+    species: varchar("species", { length: 256 }),
+    size: varchar("size", { length: 1024 }),
+    base: varchar("base", { length: 1024 }),
+    cost: integer('cost'),
+    m: varchar("m", { length: 256 }),
+    s: varchar("s", { length: 256 }),
+    b: varchar("b", { length: 256 }),
+    r: varchar("r", { length: 256 }),
+    n: varchar("n", { length: 256 }),
+    c: varchar("c", { length: 256 }),
+    a: varchar("a", { length: 256 }),
+    f: varchar("f", { length: 256 }),
+    p: varchar("p", { length: 256 }),
+    skills: json('items').$type<string[]>(),
+    rare: boolean('rare'),
+    createdAt: timestamp("created_at")
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp("updatedAt"),
+  },
+  (example) => ({
+    speciesIndex: index("beasts_speciesx").on(example.species),
+  })
+);
 
-// const product = await tx
-//   .insert(products)
-//   .values({
-//     entityId: input.entityId,
-//     eventType: input.eventType,
-//     // payload: input.payload, Instead use 👇
-//     payload: sql`${input.payload}::json`, // or ::jsonb
-//   }) https://stackoverflow.com/questions/76503705/drizzle-columns-schema-json-stores-my-json-as-text-in-postgresql
-// type UserId = number & { __brand: 'user_id' };
-// type Data = {
-//   foo: string;
-//   bar: number;
-// };One, 
-// const users = mysqlTable('users', {
-//   id: int('id').$type<UserId>().primaryKey(),images
-//   jsonField: json('json_field').$type<Data>(),
-// });
+export const beastsRelations = relations(beasts, ({ many }) => ({
+  minis: many(minis),
+}));
 
 export const minis = createTable("minis",
   {
@@ -82,8 +86,8 @@ export const minis = createTable("minis",
     cost: integer('cost'),
     species: varchar("species", { length: 256 }),
     imageId: integer('imageId'),
-    
     userId: varchar("userId", {length:256}).notNull(),
+    speciesId: integer('speciesId'),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
@@ -98,6 +102,10 @@ export const minisRelations = relations(minis, ({ many, one }) => ({
   image: one(images, {
     fields: [minis.imageId],
     references: [images.id],
+  }),
+  species: one(beasts, {
+    fields: [minis.speciesId],
+    references: [beasts.id],
   }),
   minisToWarbands: many(minisToWarbands),
 }));
