@@ -16,7 +16,7 @@ import {
 export function DenNavigationMenu(){
     const den = 'burrow';
     return (
-        <>
+        <div className="top">
 
             <NavigationMenu className="size-full p-2">
             <NavigationMenuList className="mb-4 flex items-center">

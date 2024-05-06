@@ -73,19 +73,19 @@ export async function getMyMinis() {
         orderBy:(model, { desc }) => desc(model.id),
         with: {
             image: true,
-            species: true,
-            // skillsToMinis: true,
+            species: {
+                with:{
+                    skillsToBeasts: {
+                        with:{
+                            skill: true
+                        }
+                    }
+                }
+            },
             skillsToMinis: {
                 with:{
                     skill:true
                 }
-                // }
-                // skill: {
-                //     name: string | null;
-                // },
-                // with: {
-                //     skill: true
-                // }
             }
         },
     });

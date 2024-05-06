@@ -101,11 +101,11 @@ export const columns: ColumnDef<any>[] = [
     {
         header: "Innate Skills",
         cell: ({row}) => {
-
+            console.log('||||||||||||||||||row', row.original.species.skillsToBeasts)
             return (
                 <div className="flex flex-col">
-                    {row.original.species.skills?.map((skill, index) => (
-                       <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">{skill}</div>
+                    {row.original.species.skillsToBeasts?.map((skill, index) => (
+                       <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">{skill.skill.name} {skill.skill.skilllevel}</div>
                     ))}
                 </div>
                 
@@ -115,7 +115,7 @@ export const columns: ColumnDef<any>[] = [
     {
         header: "Skills",
         cell: ({row}) => {
-            console.log('||||||||||||||||||row', row.original.skillsToMinis)
+            
             return (
                 <div className="flex flex-col">
                     {row.original.skillsToMinis?.map((skill, index) => (

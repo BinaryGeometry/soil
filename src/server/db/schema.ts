@@ -75,6 +75,7 @@ export const beasts = createTable("beasts",
 
 export const beastsRelations = relations(beasts, ({ many }) => ({
   minis: many(minis),
+  skillsToBeasts: many(skillsToBeasts)
 }));
 
 export const skills = createTable("skills",
@@ -84,6 +85,7 @@ export const skills = createTable("skills",
     name: varchar("name", { length: 256 }),
     round: varchar("round", { length: 256 }),
     modifier: json('modifier').$type<string[]>(),
+    skilllevel: integer('skilllevel'),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
@@ -96,6 +98,7 @@ export const skills = createTable("skills",
 
 export const skillsRelations = relations(skills, ({ many }) => ({
   skillsToMinis: many(skillsToMinis),
+  skillsToBeasts: many(skillsToBeasts),
 }));
 
 export const minis = createTable("minis",
@@ -132,32 +135,6 @@ export const minisRelations = relations(minis, ({ many, one }) => ({
   skillsToMinis: many(skillsToMinis)
 }));
 
-// export const minisToSkills = pgTable(
-//   'minis_to_skills',
-//   {
-//     skillId: integer('skill_id')
-//       .notNull()
-//       .references(() => skills.id),
-//     miniId: integer('mini_id')
-//       .notNull()
-//       .references(() => minis.id),
-//   },
-//   (t) => ({
-//     pk: primaryKey({ columns: [t.skillId, t.miniId] }),
-//   }),
-// );
-
-// export const skillsToMinisRelations = relations(skillsToMinis, ({ one }) => ({
-//   skill: one(skills, {
-//     fields: [skillsToMinis.skillId],
-//     references: [skills.id],
-//   }),
-//   mini: one(minis, {
-//     fields: [skillsToMinis.miniId],
-//     references: [minis.id],
-//   }),
-// }));
-
 export const skillsToMinis = pgTable(
   'skills_to_minis',
   {
@@ -184,9 +161,31 @@ export const skillsToMinisRelations = relations(skillsToMinis, ({ one }) => ({
   }),
 }));
 
+export const skillsToBeasts = pgTable(
+  'skills_to_beasts',
+  {
+    skillId: integer('skill_id')
+      .notNull()
+      .references(() => skills.id),
+    beastId: integer('beast_id')
+      .notNull()
+      .references(() => beasts.id),
+  },
+  (t) => ({
+    pk: primaryKey({ columns: [t.skillId, t.beastId] }),
+  }),
+);
 
-
-
+export const skillsToBeastsRelations = relations(skillsToBeasts, ({ one }) => ({
+  skill: one(skills, {
+    fields: [skillsToBeasts.skillId],
+    references: [skills.id],
+  }),
+  beast: one(beasts, {
+    fields: [skillsToBeasts.beastId],
+    references: [beasts.id],
+  }),
+}));
 
 export const warbands = createTable("warbands",
   {
