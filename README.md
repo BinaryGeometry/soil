@@ -78,3 +78,36 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
 
 Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
 
+
+
+# Warbands
+
+start with 350 pennies
+
+dice = [{"dd": "D4"}, {"d6": "D6"}, {"d8": "D8"}, {"d12": "D12"}, {"d20": "D20"}];
+
+cost = modelCost + equipmentCost + spellsCost
+
+dudes
+
+Leader min 1
+one skill
+one stat +1
+
+second
+one skill
+
+magic
+
+weapon1
+weapon2
+armour1
+armour2
+items
+speciaal
+spells
+arrows
+poinsons
+powders
+
+

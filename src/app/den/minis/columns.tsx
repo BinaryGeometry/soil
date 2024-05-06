@@ -99,13 +99,27 @@ export const columns: ColumnDef<any>[] = [
         }
     },
     {
-        header: "Skills",
+        header: "Innate Skills",
         cell: ({row}) => {
 
             return (
                 <div className="flex flex-col">
                     {row.original.species.skills?.map((skill, index) => (
                        <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">{skill}</div>
+                    ))}
+                </div>
+                
+            )
+        }
+    },
+    {
+        header: "Skills",
+        cell: ({row}) => {
+            console.log('||||||||||||||||||row', row.original.skillsToMinis)
+            return (
+                <div className="flex flex-col">
+                    {row.original.skillsToMinis?.map((skill, index) => (
+                       <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">{skill.skill.name}</div>
                     ))}
                 </div>
                 

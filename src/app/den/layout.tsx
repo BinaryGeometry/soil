@@ -27,9 +27,12 @@ export default function DenLayout({
   return (
 
       <div className="container relative">
-        
+        <div className="absolute top">
           <DenNavigationMenu />
+        </div>
+        <div className="mt-20">
           {children}
+        </div>
         
      
         

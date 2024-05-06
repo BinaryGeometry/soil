@@ -63,17 +63,34 @@ export async function deleteImage(id: string) {
 export async function getMyMinis() {
 
     const user = auth()
+
     const userId = user.userId;
     if (!userId) throw new Error('error');
     
+    console.log('userId' , userId)
     const minis = await db.query.minis.findMany({
         where:(model, { eq }) => eq(model.userId, userId),
         orderBy:(model, { desc }) => desc(model.id),
         with: {
             image: true,
-            species: true
+            species: true,
+            // skillsToMinis: true,
+            skillsToMinis: {
+                with:{
+                    skill:true
+                }
+                // }
+                // skill: {
+                //     name: string | null;
+                // },
+                // with: {
+                //     skill: true
+                // }
+            }
         },
     });
+    minis.map  
+    // console.log('here they', minis)
     return minis;
 }
 
