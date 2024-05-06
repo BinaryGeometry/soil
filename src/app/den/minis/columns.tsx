@@ -29,7 +29,7 @@ const columnHelper = createColumnHelper();
 export function StatPanel({stats}){
     
     const den = 'burrow';
-    console.log('stats!!!!!!', stats)
+    // console.log('stats!!!!!!', stats)
     return (
         <div className="flex">
             <div className="flex-none flex flex-col">
@@ -99,33 +99,35 @@ export const columns: ColumnDef<any>[] = [
         }
     },
     {
-        header: "Innate Skills",
-        cell: ({row}) => {
-            console.log('||||||||||||||||||row', row.original.species.skillsToBeasts)
-            return (
-                <div className="flex flex-col">
-                    {row.original.species.skillsToBeasts?.map((skill, index) => (
-                       <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">{skill.skill.name} {skill.skill.skilllevel}</div>
-                    ))}
-                </div>
-                
-            )
-        }
-    },
-    {
         header: "Skills",
         cell: ({row}) => {
-            
+            const skillList: any[] = [];
+            row.original.species.skillsToBeasts?.forEach( (item) => skillList.push(item.skill) );
+            row.original.skillsToMinis?.forEach( (item) => skillList.push(item.skill) );
             return (
                 <div className="flex flex-col">
-                    {row.original.skillsToMinis?.map((skill, index) => (
-                       <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">{skill.skill.name}</div>
+                    {skillList?.map((item, index) => (
+                       <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">{item.name} {item.skilllevel}</div>
                     ))}
                 </div>
                 
             )
         }
     },
+    // {
+    //     header: "Skills",
+    //     cell: ({row}) => {
+            
+    //         return (
+    //             <div className="flex flex-col">
+    //                 {row.original.skillsToMinis?.map((skill, index) => (
+    //                    <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">{skill.skill.name}</div>
+    //                 ))}
+    //             </div>
+                
+    //         )
+    //     }
+    // },
     {
         header: "Cost",
         cell: ({row}) => {

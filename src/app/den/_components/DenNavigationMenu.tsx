@@ -42,6 +42,6 @@ export function DenNavigationMenu(){
                 </NavigationMenuItem> 
             </NavigationMenuList>
             </NavigationMenu>
-        </>
+        </div>
     )
 }

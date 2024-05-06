@@ -101,6 +101,51 @@ export const skillsRelations = relations(skills, ({ many }) => ({
   skillsToBeasts: many(skillsToBeasts),
 }));
 
+export const items = createTable("items",
+  {
+    id: serial("id").primaryKey(),
+    name: varchar("name", { length: 256 }),
+    cost: integer("cost"),
+    group: varchar("group", { length: 256 }),
+    subGroup: varchar("sub_group", { length: 256 }),
+    createdAt: timestamp("created_at")
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp("updatedAt"),
+  },
+  (example) => ({
+    equipmentIndexGroup: index("items_group").on(example.group),
+  })
+);
+
+export const itemsRelations = relations(items, ({ many }) => ({
+  // itemsToMinis: many(skillsToMinis),
+  // skillsToBeasts: many(skillsToBeasts),
+}));
+
+export const magic = createTable("magic",
+  {
+    id: serial("id").primaryKey(),
+    list: varchar("list", { length: 256 }),
+    name: varchar("name", { length: 256 }),
+    spell: varchar("name", { length: 256 }),
+    lede: varchar("lede", { length: 256 }),
+    action: varchar("action", { length: 256 }),
+    createdAt: timestamp("created_at")
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp("updatedAt"),
+  },
+  (example) => ({
+    magicIndexList: index("magic_list").on(example.list),
+  })
+);
+
+export const magicRelations = relations(magic, ({ many }) => ({
+  // skillsToMinis: many(skillsToMinis),
+  // skillsToBeasts: many(skillsToBeasts),
+}));
+
 export const minis = createTable("minis",
   {
     id: serial("id").primaryKey(),
@@ -112,6 +157,10 @@ export const minis = createTable("minis",
     imageId: integer('imageId'),
     userId: varchar("userId", {length:256}).notNull(),
     speciesId: integer('speciesId'),
+
+    weapon1Id: integer('weapon_1'),
+    weapon2Id: integer('weapon_2'),
+
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
@@ -123,6 +172,14 @@ export const minis = createTable("minis",
 );
 
 export const minisRelations = relations(minis, ({ many, one }) => ({
+  weapon1: one(items, {
+    fields: [minis.weapon1Id],
+    references: [items.id],
+  }),
+  weapon2: one(items, {
+    fields: [minis.weapon2Id],
+    references: [items.id],
+  }),
   image: one(images, {
     fields: [minis.imageId],
     references: [images.id],
@@ -184,6 +241,32 @@ export const skillsToBeastsRelations = relations(skillsToBeasts, ({ one }) => ({
   beast: one(beasts, {
     fields: [skillsToBeasts.beastId],
     references: [beasts.id],
+  }),
+}));
+
+export const magicToMinis = pgTable(
+  'magic_to_minis',
+  {
+    magicId: integer('magic_id')
+      .notNull()
+      .references(() => magic.id),
+    miniId: integer('mini_id')
+      .notNull()
+      .references(() => minis.id),
+  },
+  (t) => ({
+    pk: primaryKey({ columns: [t.magicId, t.miniId] }),
+  }),
+);
+
+export const magicToMinisRelations = relations(magicToMinis, ({ one }) => ({
+  magic: one(magic, {
+    fields: [magicToMinis.magicId],
+    references: [magic.id],
+  }),
+  mini: one(minis, {
+    fields: [magicToMinis.miniId],
+    references: [minis.id],
   }),
 }));
 
