@@ -27,7 +27,7 @@ export default async function ImagesPage() {
       <main className="">
         <SimpleUploadButton />
         <Images/>
-          {/* <CrudShowcase /> */}
+        {/* <CrudShowcase /> */}
       </main>
     );
   }

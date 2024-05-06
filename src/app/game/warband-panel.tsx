@@ -1,7 +1,5 @@
 export function WarbandPanel({warband}){
-    
     const den = 'burrow';
-    console.log('warband!!!!!!', warband)
     return (
     <div className="flex flex-col">
         <div className="flex-none flex">
@@ -28,3 +26,9 @@ export function WarbandPanel({warband}){
     </div>
     )
 }
+
+// export function RostaPanel({warbandId}){
+
+
+// })
+

@@ -190,3 +190,8 @@ export const gamesRelations = relations(games, ({ many, one }) => ({
   }),
 }));
 
+  // p1Rosta: many(minis, {
+  //   fields: [minisToWarbands.warbandId],
+  //   references: [warbands.id],
+  // }),
+

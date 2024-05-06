@@ -77,6 +77,23 @@ export async function getMyMinis() {
     return minis;
 }
 
+// export async function getWarbandMinis(warbandId) {
+
+//     const user = auth()
+//     const userId = user.userId;
+//     if (!userId) throw new Error('error');
+    
+//     const minis = await db.query.minis.findMany({
+//         where:(model, { eq }) => eq(model.userId, warbandId),
+//         orderBy:(model, { desc }) => desc(model.id),
+//         with: {
+//             image: true,
+//             species: true
+//         },
+//     });
+//     return minis;
+// }
+
 export async function getGameState(gameId: number) {
 
     const user = auth()
@@ -88,8 +105,19 @@ export async function getGameState(gameId: number) {
         orderBy:(model, { desc }) => desc(model.id),
         with: {
             p1Warband: true,
-            p2Warband: true,
+            p2Warband: true
+                // with: {
+                //   groups: true
+                // }
+            //   },
         },
     });
     return game;
 }
+
+// p1Warband: {
+            //     with: {
+            //         minisToWarbands: true
+            //     }
+            // },
+

@@ -13,6 +13,9 @@ https://nextjs.org/docs/app/building-your-application/routing/colocation
 https://css-tricks.com/snippets/css/complete-guide-grid/
 heroicons///
 https://plausible.io/
+(https://inertiajs.com/)
+https://kysely.dev/
+https://www.reddit.com/r/reactjs/comments/18c80sz/drizzle_is_just_as_unready_for_primetime_as/
 
 doing my best work for you should never mean that i have to less than my best work for anyone else
 ## TODO
