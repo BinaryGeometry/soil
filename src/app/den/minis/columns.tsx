@@ -26,6 +26,11 @@ export type Mini = {
 const columnHelper = createColumnHelper();
 
 
+export function Pennie({cost}){
+    return (
+        <span className="bg-[#d4af37] text-black rounded-full p-1 ml-1 text-xs">{cost}p</span>
+    )
+}
 export function StatPanel({stats}){
     
     const den = 'burrow';
@@ -81,13 +86,17 @@ export const columns: ColumnDef<any>[] = [
         },
     },
     {
+        header: "Id",
+        accessorKey: "id",
+    },
+    {
         header: "Name",
         accessorKey: "name",
     },
     {
         header: "Species",
         cell: ({row}) => {
-            return ( <span>{row.original.species.species} ({row.original.species.size} {row.original.species.base})</span> )    
+            return ( <span>{row.original.species.species} ({row.original.species.size} {row.original.species.base}) <Pennie cost={row.original.species.cost}/></span> )    
         },
     },
     {
@@ -114,24 +123,99 @@ export const columns: ColumnDef<any>[] = [
             )
         }
     },
-    // {
-    //     header: "Skills",
-    //     cell: ({row}) => {
-            
-    //         return (
-    //             <div className="flex flex-col">
-    //                 {row.original.skillsToMinis?.map((skill, index) => (
-    //                    <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">{skill.skill.name}</div>
-    //                 ))}
-    //             </div>
-                
-    //         )
-    //     }
-    // },
     {
-        header: "Cost",
+        header: "Weapons",
         cell: ({row}) => {
-            return ( <div>{row.original.species.cost}p</div> )    
+            console.log('row.original.itemsToMinis', row.original.itemsToMinis)
+            return (
+                <div className="flex flex-col">
+                    {row.original.itemsToMinis?.map((item, index) => (
+                       item.item.group == 'weapon'
+                       ? <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">
+                        <i className="ra fa-fw ra-sword"></i>
+                        {item.item.name} 
+                        <Pennie cost={item.item.cost}/>
+                        </div>
+                        : null
+                    ))}
+                </div>
+                
+            )
+        }
+    },
+    {
+        header: "Armour",
+        cell: ({row}) => {
+            console.log('row.original.itemsToMinis', row.original.itemsToMinis)
+            return (
+                <div className="flex flex-col">
+                    {row.original.itemsToMinis?.map((item, index) => (
+                       item.item.group == 'armour'
+                       ? <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">
+                        <i className="ra fa-fw ra-sword"></i>
+                        {item.item.name}
+                        <Pennie cost={item.item.cost}/>
+                        </div>
+                        : null
+                    ))}
+                </div>
+                
+            )
+        }
+    },
+    {
+        header: "Items",
+        cell: ({row}) => {
+            console.log('row.original.itemsToMinis', row.original.itemsToMinis)
+            return (
+                <div className="flex flex-col">
+                    {row.original.itemsToMinis?.map((item, index) => (
+                       item.item.group == 'item'
+                       ? <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">
+                        <i className="ra fa-fw ra-sword"></i>
+                        {item.item.name} 
+                        <Pennie cost={item.item.cost}/>
+                        </div>
+                        : null
+                    ))}
+                </div>
+            )
+        }
+    },
+    {
+        header: "Magic",
+        cell: ({row}) => {
+            console.log(row.original)
+            return (
+                <div className="flex flex-col rounded-sm text-white bg-green-500 mb-1 p-1">
+                    <p>{row.original.magicList}</p>
+                    {row.original.magicToMinis?.map((magic, index) => (
+                        <div>
+                        
+                            
+                            <div className="rounded-sm text-white bg-gray-500 mb-1 p-1">
+                                {magic.magic.name} 
+                                <Pennie cost={magic.magic.cost}/>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )
+        }
+    },
+    {
+        header: "Total Cost",
+        cell: ({row}) => {
+            let runningTotal = row.original.species.cost;
+            row.original.itemsToMinis?.forEach( (item) => {
+                if(!isNaN(item.item.cost))
+                    runningTotal += item.item.cost;
+            })
+            row.original.magicToMinis?.forEach( (spell) => {
+                if(!isNaN(spell.magic.cost))
+                    runningTotal += spell.magic.cost;
+            })
+            return ( <div><Pennie cost={runningTotal}/></div> )    
         },
     },
 ]

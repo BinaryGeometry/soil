@@ -86,6 +86,16 @@ export async function getMyMinis() {
                 with:{
                     skill:true
                 }
+            },
+            itemsToMinis: {
+                with:{
+                    item:true
+                }
+            },
+            magicToMinis: {
+                with:{
+                    magic:true
+                }
             }
         },
     });
