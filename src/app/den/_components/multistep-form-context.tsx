@@ -7,6 +7,7 @@ export type Warband = {
 	name?: string
 	pennies?: number
   allegience?: string
+  den?: string
 }
 
 export interface WarbandContextProps {

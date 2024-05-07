@@ -15,11 +15,18 @@ heroicons///
 https://plausible.io/
 (https://inertiajs.com/)
 https://kysely.dev/
+6 -
 https://www.reddit.com/r/reactjs/comments/18c80sz/drizzle_is_just_as_unready_for_primetime_as/
+7-
 https://medium.com/@wdswy/how-to-build-a-multi-step-form-using-nextjs-typescript-react-context-and-shadcn-ui-ef1b7dcceec3
 https://stackoverflow.com/questions/70095033/typescript-react-an-argument-for-defaultvalue-was-not-provided
 https://stackoverflow.com/questions/41610811/react-js-how-to-send-a-multipart-form-data-to-server
 https://dev.to/bookmdan/understanding-createcontext-in-react-a-comprehensive-guide-5469
+https://medium.com/@wdswy/
+8-
+https://www.letsbuildui.dev/articles/animated-page-transitions-in-nextjs/
+
+https://upmostly.com/next-js/how-to-build-an-animated-dashboard-with-framer-motion-in-next-js
 
 
 doing my best work for you should never mean that i have to less than my best work for anyone else

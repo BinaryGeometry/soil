@@ -7,6 +7,7 @@ import { TRPCReactProvider } from "~/trpc/react";
 import { DenMenuBar } from "../_components/menu-bar";
 import { DenNavigationMenu } from "./_components/DenNavigationMenu";
 
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -25,6 +26,7 @@ export default function DenLayout({
   children: React.ReactNode;
 }) {
   return (
+   
 
       <div className="container relative">
         <div className="absolute top">
