@@ -23,10 +23,11 @@ https://stackoverflow.com/questions/70095033/typescript-react-an-argument-for-de
 https://stackoverflow.com/questions/41610811/react-js-how-to-send-a-multipart-form-data-to-server
 https://dev.to/bookmdan/understanding-createcontext-in-react-a-comprehensive-guide-5469
 https://medium.com/@wdswy/
-8-
+8-menus-and-navigation
 https://www.letsbuildui.dev/articles/animated-page-transitions-in-nextjs/
 
 https://upmostly.com/next-js/how-to-build-an-animated-dashboard-with-framer-motion-in-next-js
+// https://medium.com/@r.gausai/simplify-your-next-js-apps-active-links-with-useactiverouter-and-link-14f428fccf1f
 
 
 doing my best work for you should never mean that i have to less than my best work for anyone else

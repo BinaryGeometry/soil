@@ -326,7 +326,7 @@ export const warbandsRelations = relations(warbands, ({ many }) => ({
   minisToWarbands: many(minisToWarbands),
 }));
 
-export const minisToWarbands = createTable('minis_to_warbands',
+export const minisToWarbands = pgTable('minis_to_warbands',
   {
     miniId: integer('mini_id')
       .notNull()

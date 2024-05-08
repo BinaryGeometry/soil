@@ -23,9 +23,7 @@ import { getMyMinis } from  "~/server/queries"
 export default async function MinisPage() {
   const data = await getMyMinis()
 
-
-
-  // console.log(data[0])
+  console.log(data[0])
   
   return (
     <div className="container mx-auto py-10">

@@ -104,6 +104,112 @@ export async function getMyMinis() {
     return minis;
 }
 
+export async function getMyWarbands() {
+
+    const user = auth();
+
+    const userId = user.userId;
+    if (!userId) throw new Error('error');
+    
+    console.log('userId' , userId)
+    const warbands = await db.query.warbands.findMany({
+        where:(model, { eq }) => eq(model.userId, userId),
+        orderBy:(model, { desc }) => desc(model.id),
+        with: {
+            minisToWarbands: {
+                with: {
+                    // image: true,
+                    // species: {
+                //         with:{
+                //             skillsToBeasts: {
+                //                 with:{
+                //                     skill: true
+                //                 }
+                //             }
+                //         }
+                //     },
+                //     skillsToMinis: {
+                //         with:{
+                //             skill:true
+                //         }
+                //     },
+                //     itemsToMinis: {
+                //         with:{
+                //             item:true
+                //         }
+                //     },
+                //     magicToMinis: {
+                //         with:{
+                //             magic:true
+                //         }
+                //     }
+                }
+            },
+        },
+    });
+    console.log('warbands', warbands);
+    return warbands;
+}
+
+export async function getWarband($warbandId) {
+
+    const user = auth();
+
+    const userId = user.userId;
+    if (!userId) throw new Error('error');
+    
+    console.log('userId' , userId)
+    const warband = await db.query.minis.findOne({
+        where:(model, { eq }) => eq(model.id, $warbandId),
+        with: {
+            minisToWarbands: {
+                with: {
+                    image: true,
+                    species: {
+                        with:{
+                            skillsToBeasts: {
+                                with:{
+                                    skill: true
+                                }
+                            }
+                        }
+                    },
+                    skillsToMinis: {
+                        with:{
+                            skill:true
+                        }
+                    },
+                    itemsToMinis: {
+                        with:{
+                            item:true
+                        }
+                    },
+                    magicToMinis: {
+                        with:{
+                            magic:true
+                        }
+                    }
+                }
+            },
+        },
+    });
+    console.log('|||warband|||', warband);
+    // if (!userId != )warband throw new Error('no access');
+    return warband;
+}
+
+// export async function getMyMinis() {
+
+//     const user = auth()
+
+//     const userId = user.userId;
+//     if (!userId) throw new Error('error');
+    
+//     console.log('userId' , userId)
+//     const minis = await db.query.minis.findMany({
+//         where:(model, { eq }) => eq(model.userId, userId),
+//         orderBy:(model, { desc }) => desc(model.id),
+
 // export async function getWarbandMinis(warbandId) {
 
 //     const user = auth()
